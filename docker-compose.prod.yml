@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    build: ./backend
+    build: ./todo-backend/backend
     command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
@@ -18,7 +18,7 @@ services:
       - ./.env.prod.db
   nginx:
     image: front:latest
-   # build: ./frontend
+    build: ./todo-frontend/frontend
     ports:
       - 1337:80
     depends_on:
